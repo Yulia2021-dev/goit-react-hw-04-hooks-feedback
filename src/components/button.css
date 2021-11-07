@@ -1,0 +1,13 @@
+.btnStyle {
+  padding: 5px;
+  background-color: rgb(49, 243, 58);
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: springgreen;
+  cursor: pointer;
+}
+
+.btnText {
+  font-weight: bold;
+}
