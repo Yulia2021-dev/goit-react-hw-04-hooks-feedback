@@ -1,15 +1,53 @@
-import { Button } from "./components/Button.jsx";
-import "./App.css";
-// import { Statistics } from "./Components/Statistics/Statistics.jsx";
-import Clock from "./components/Clock";
+import React, { Component } from "react";
+import FeedbackOptions from "./components/feedbackOptions/FeedbackOptions.jsx";
+import Statistics from "./components/statistics/Statistics.jsx";
+// import Clock from "./components/clock/Clock";
 
-function App() {
-  return (
-    <div className="App">
-      <Button />
-      <Clock />
-    </div>
-  );
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
+    this.incrementOption = this.incrementOption.bind(this);
+  }
+
+  incrementOption(option) {
+    this.setState((state) => {
+      return {
+        [option]: state[option] + 1,
+      };
+    });
+  }
+
+  render() {
+    const total = Object.values(this.state).reduce((a, b) => a + b);
+    let expr = this.state.good / total;
+    if (isNaN(expr)) {
+      expr = 0;
+    }
+    const positivePercentage = Math.floor(expr * 100);
+    return (
+      <div className="App">
+        <FeedbackOptions
+          options={Object.keys(this.state)}
+          onLeaveFeedback={this.incrementOption}
+        />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={total}
+          positivePercentage={positivePercentage}
+        />
+        {/* <Clock /> */}
+      </div>
+    );
+  }
 }
 
 export default App;

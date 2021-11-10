@@ -1,16 +1,50 @@
-// import React from 'react';
-// import 'App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Section from '../section/Section';
+import Notification from '../notification/Notification';
 
-// function Statistics(props) {
+import s from './statistics.css';
 
-//   const { id, name } = props;
-//   return (
-//   <>
-//   <p>Statistics</p>
-//     <span>
-//       </>
-//       )};
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
+  return (
+    <Section title="Statistics">
+      {!total
+        ? <Notification message="No feedback given" />
+        : (
+          <div className={s.Statistics}>
+          <ul className={s.Statistics__list}>
+            <li className="Statistics__item">
+              Good: {good}
+            </li>
+            <li className="Statistics__item">
+              Neutral: {neutral}
+            </li>
+            <li className="Statistics__item">
+              Bad: {bad}
+            </li>
+            <li className="Statistics__item">
+              Total: {total}
+            </li>
+            <li className="Statistics__item">
+              Positive: {positivePercentage}%
+            </li>
+          </ul>
+        </div>
+      )
+      }
+    </Section>
+  );
+}
 
 
 
-// export { Statistics };
+Statistics.propTypes = {
+  good: PropTypes.number,
+  bad: PropTypes.number,
+  neutral: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
+};
+
+
+export default Statistics;
