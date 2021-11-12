@@ -6,15 +6,11 @@ import Statistics from "./components/statistics/Statistics.jsx";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    };
-    this.incrementOption = this.incrementOption.bind(this);
-  }
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
 
   incrementOption(option) {
     this.setState((state) => {
@@ -35,7 +31,7 @@ class App extends Component {
       <div className="App">
         <FeedbackOptions
           options={Object.keys(this.state)}
-          onLeaveFeedback={this.incrementOption}
+          onLeaveFeedback={this.incrementOption.bind(this)}
         />
         <Statistics
           good={this.state.good}
