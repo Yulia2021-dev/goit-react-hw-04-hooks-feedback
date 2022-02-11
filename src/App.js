@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FeedbackOptions from "./components/feedbackOptions/FeedbackOptions.jsx";
+import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions.jsx";
 import Statistics from "./components/statistics/Statistics.jsx";
 
 import "./App.css";
@@ -12,7 +12,7 @@ export default function App() {
   const [bad, setBad] = useState(initialRating);
 
   const incrementOption = (option) => {
-    switch (option) { 
+    switch (option) {
       case "good":
         setGood(good + 1);
         break;
