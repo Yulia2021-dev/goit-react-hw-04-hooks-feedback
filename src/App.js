@@ -12,15 +12,6 @@ export default function App() {
   const [bad, setBad] = useState(initialRating);
 
   const incrementOption = (option) => {
-    // if (option === "good") {
-    //   setGood(good + 1);
-    // } else if (option === "neutral") {
-    //   setNeutral(neutral + 1);
-    // } else if (option === "bad") {
-    //   setBad(bad + 1);
-    // } else {
-    //   console.error("No matched option");
-    // }
     switch (option) { 
       case "good":
         setGood(good + 1);
